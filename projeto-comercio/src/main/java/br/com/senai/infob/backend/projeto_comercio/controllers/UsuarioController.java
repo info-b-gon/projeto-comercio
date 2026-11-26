@@ -23,7 +23,12 @@ public class UsuarioController {
   }
 
   @PostMapping("/logar")
-  public Usuario logar(@RequestBody Usuario usuario) {
-    return usuarioService.logar(usuario.getEmail(), usuario.getSenha());
+  public String logar(@RequestBody Usuario usuario) {
+    Usuario usuarioLogado = usuarioService.logar(usuario.getEmail(), usuario.getSenha());
+    if (usuarioLogado != null) {
+      return "Login bem-sucedido!";
+    } else {
+      return "Credenciais inválidas.";
+    }
   }
 }
