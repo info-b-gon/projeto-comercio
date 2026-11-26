@@ -21,4 +21,9 @@ public class UsuarioController {
   public Usuario cadastrar(@RequestBody Usuario usuario) {
     return usuarioService.cadastrar(usuario);
   }
+
+  @PostMapping("/logar")
+  public Usuario logar(@RequestBody Usuario usuario) {
+    return usuarioService.logar(usuario.getEmail(), usuario.getSenha());
+  }
 }

@@ -15,4 +15,12 @@ public class UsuarioService {
   public Usuario cadastrar(Usuario usuario) {
     return usuarioRepository.save(usuario);
   }
+
+  public Usuario logar(String email, String senha) {
+    Usuario usuario = usuarioRepository.findByEmail(email);
+    if (usuario != null && usuario.getSenha().equals(senha)) {
+      return usuario;
+    }
+    return null;
+  }
 }
